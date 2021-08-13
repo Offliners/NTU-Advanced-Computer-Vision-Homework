@@ -19,3 +19,5 @@ All generated images are saved in `demo`
 * Use trucka.bmp as the basis, sample it by an `9×9` , `11×11`, `15×15`, `21×21`, `31×31` block.
 * Threshold of search range: `50` pixels. (This is a reference value only!)
 * Dimension of truck is `386×386` with 216 bytes of leading header.
+
+## Result
