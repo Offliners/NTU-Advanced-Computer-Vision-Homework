@@ -10,3 +10,5 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(hw1 hw1.cpp)
 target_link_libraries(hw1 ${OpenCV_LIBS})
+
+file(MAKE_DIRECTORY demo)
