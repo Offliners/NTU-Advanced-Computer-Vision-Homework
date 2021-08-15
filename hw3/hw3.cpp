@@ -46,14 +46,14 @@ int main(int argc, char **argv)
 
 void drawOpticalFlow(Mat &img1, Mat &img2, int iter, double lamb)
 {
-    Mat u, v;
-    Mat result(img2.rows, img2.cols, CV_8UC3, Scalar(255, 255, 255));
-    int scale = 20;
+    Mat u, v, result;
+    img2.copyTo(result);
+    int scale = 10;
 
     calHornSchunck(img1, img2, u, v, iter, lamb);
     for(int i = 2; i < u.cols; i += scale)
         for(int j = 2; j < v.cols; j += scale)
-            arrowedLine(result, Point(i, j), Point(i + scale * u.at<double>(i, j), j + scale * v.at<double>(i, j)), Scalar(255, 0, 0), 2);
+            arrowedLine(result, Point(i, j), Point(i + scale * u.at<double>(i, j), j + scale * v.at<double>(i, j)), Scalar(255));
 
     ostringstream temp;
     temp << lamb;
