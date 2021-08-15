@@ -47,7 +47,6 @@ int main(int argc, char **argv)
                     img_name = "Photo/" + to_string(f[i]) + "mm/" + to_string(object_distance[j]) + "mm_" + to_string(object_displacement[k]) + "mm.JPG";
                     img = imread(img_name);
                 }
-                // imgDataset[i][j].push_back(img);
                 img.copyTo(imgDataset[i][j][k]);
             }
         }
