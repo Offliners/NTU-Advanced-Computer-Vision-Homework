@@ -81,7 +81,6 @@ int main(int argc, char **argv)
     output << "Focal length(mm), Object distance(mm), Object actual displacement(mm), Object displacement(pixel), mm/pixel, FOV theoretical value(degree), FOV measured value(degree)" << endl;
     for(int i = 0; i < num_f; ++i)
     {
-        
         for(int j = 0; j < num_object_distance; ++j)
         {
             for(int k = 0; k < num_object_displacement; ++k)
