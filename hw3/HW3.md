@@ -21,3 +21,9 @@ All generated images are saved in `demo`
 * For each λ, show the result after `1`, `4`, `16`, `64` iterations.
 
 ## Result
+|Iteration|lambda = 0.1|lambda = 1|lambda = 10|
+|-|-|-|-|
+|1|![HornSchunck_iter1_lamb0.1](demo/HornSchunck_iter1_lamb0.1.jpg)|![HornSchunck_iter1_lamb1](demo/HornSchunck_iter1_lamb1.jpg)|![HornSchunck_iter1_lamb10](demo/HornSchunck_iter1_lamb10.jpg)|
+|4|![HornSchunck_iter4_lamb0.1](demo/HornSchunck_iter4_lamb0.1.jpg)|![HornSchunck_iter4_lamb1](demo/HornSchunck_iter4_lamb1.jpg)|![HornSchunck_iter4_lamb10](demo/HornSchunck_iter4_lamb10.jpg)|
+|16|![HornSchunck_iter16_lamb0.1](demo/HornSchunck_iter16_lamb0.1.jpg)|![HornSchunck_iter16_lamb1](demo/HornSchunck_iter16_lamb1.jpg)|![HornSchunck_iter16_lamb10](demo/HornSchunck_iter16_lamb10.jpg)|
+|64|![HornSchunck_iter64_lamb0.1](demo/HornSchunck_iter64_lamb0.1.jpg)|![HornSchunck_iter64_lamb1](demo/HornSchunck_iter64_lamb1.jpg)|![HornSchunck_iter64_lamb10](demo/HornSchunck_iter64_lamb10.jpg)|
