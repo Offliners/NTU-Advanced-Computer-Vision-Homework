@@ -53,7 +53,7 @@ int main(int argc, char **argv)
         }
     }
 
-    // Calculate mm per pixel
+    // Calculate pixel of object motion
     vector< vector< vector<int> > > pixel_dataset(num_f, vector< vector<int> >(num_object_distance, vector<int>(num_object_displacement)));
     for(int i = 0; i < num_f; ++i)
     {
