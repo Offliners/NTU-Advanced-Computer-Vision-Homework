@@ -10,3 +10,6 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 add_executable(hw2 hw2.cpp)
 target_link_libraries(hw2 ${OpenCV_LIBS})
+
+file(MAKE_DIRECTORY output)
+file(MAKE_DIRECTORY roi)

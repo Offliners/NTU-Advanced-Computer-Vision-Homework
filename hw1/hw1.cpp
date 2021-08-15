@@ -56,8 +56,8 @@ imgSet getBlock(Mat img, int windowSize, int stride)
     {
         for(int j = 0; j < img.cols - windowSize; j += stride)
         {
-            Mat window(img, Rect(i, j, windowSize, windowSize));
-            temp.push_back( make_pair(Point2i(i, j), window) );
+            Mat window(img, Rect(j, i, windowSize, windowSize));
+            temp.push_back( make_pair(Point2i(j, i), window) );
         }
     }
 
