@@ -48,11 +48,11 @@ void drawOpticalFlow(Mat &img1, Mat &img2, int iter, double lamb)
 {
     Mat u, v, result;
     img2.copyTo(result);
-    int scale = 10;
+    int scale = 20;
 
     calHornSchunck(img1, img2, u, v, iter, lamb);
-    for(int i = 2; i < u.cols; i += scale)
-        for(int j = 2; j < v.cols; j += scale)
+    for(int i = 1; i < u.cols; i += scale)
+        for(int j = 1; j < v.cols; j += scale)
             arrowedLine(result, Point(i, j), Point(i + scale * u.at<double>(i, j), j + scale * v.at<double>(i, j)), Scalar(255));
 
     ostringstream temp;
@@ -69,8 +69,8 @@ void calHornSchunck(Mat &img1, Mat& img2, Mat &u, Mat &v, int iter, double lamb)
     u = Mat::zeros(gradt.rows, gradt.cols, CV_64FC1);
     v = Mat::zeros(gradt.rows, gradt.cols, CV_64FC1);
     int window_size = 3;
-    Mat kernel = Mat::ones(window_size, window_size, CV_64FC1) / pow(window_size, 2);
-    Point anchor(window_size - (window_size / 2) - 1, window_size - (window_size / 2) - 1);
+    Mat kernel = (Mat_<double>(window_size, window_size) << 1/12., 1/6., 1/12., 1/6., 0, 1/6., 1/12., 1/6., 1/12.);
+    Point anchor(-1, -1);
     
     for (int i = 0; i < iter; ++i)
     {
@@ -84,7 +84,7 @@ void calHornSchunck(Mat &img1, Mat& img2, Mat &u, Mat &v, int iter, double lamb)
         multiply(gradX, gradX, gradXgradX);
         multiply(gradY, gradY, gradYgradY);
         
-        divide((gradXuAvg + gradYvAvg + gradt), (pow(lamb, 2) + gradXgradX + gradYgradY), updateConst);
+        divide((gradXuAvg + gradYvAvg + gradt), (1. / lamb + (gradXgradX + gradYgradY)), updateConst);
         multiply(gradX, updateConst, uUpdateConst);
         multiply(gradY, updateConst, vUpdateConst);
         
@@ -99,7 +99,20 @@ void calGradient(Mat &img1, Mat &img2, Mat &X, Mat &Y, Mat &t)
     
     img1.convertTo(img1Norm, CV_64FC1);
     img2.convertTo(img2Norm, CV_64FC1);
-    Sobel(img1Norm, X, -1, 1, 0, 3);
-    Sobel(img1Norm, Y, -1, 0, 1, 3);
-    t = img2Norm - img1Norm;
+    Mat temp1, temp2;
+
+    Mat kernelX = (Mat_<double>(2, 2) << -1/4., 1/4., -1/4., 1/4.);
+    filter2D(img1Norm, temp1, -1, kernelX);
+    filter2D(img2Norm, temp2, -1, kernelX);
+    add(temp1, temp2, X);
+
+    Mat kernelY = (Mat_<double>(2, 2) << -1/4., -1/4., 1/4., 1/4.);
+    filter2D(img1Norm, temp1, -1, kernelY);
+    filter2D(img2Norm, temp2, -1, kernelY);
+    add(temp1, temp2, Y);
+
+    Mat kernelt = (Mat_<double>(2, 2) << 1/4., 1/4., 1/4., 1/4.);
+    filter2D(img1Norm, temp1, -1, -kernelt);
+    filter2D(img2Norm, temp2, -1, kernelt);
+    add(temp1, temp2, t);
 }
