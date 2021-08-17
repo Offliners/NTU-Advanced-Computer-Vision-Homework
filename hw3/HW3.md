@@ -28,5 +28,5 @@ All generated images are saved in `demo`
 |16|![HornSchunck_iter16_lamb0.1](demo/HornSchunck_iter16_lamb0.1.jpg)|![HornSchunck_iter16_lamb1](demo/HornSchunck_iter16_lamb1.jpg)|![HornSchunck_iter16_lamb10](demo/HornSchunck_iter16_lamb10.jpg)|
 |64|![HornSchunck_iter64_lamb0.1](demo/HornSchunck_iter64_lamb0.1.jpg)|![HornSchunck_iter64_lamb1](demo/HornSchunck_iter64_lamb1.jpg)|![HornSchunck_iter64_lamb10](demo/HornSchunck_iter64_lamb10.jpg)|
 
-## Lambda = 0.1 changes with incresing iterations 
+## Lambda = 0.1 changes with increasing iterations 
 ![lambda 0.1](img/lambda0.1.gif)
